@@ -2,6 +2,6 @@
     "name": "eyecatchup/webmaster-tools-crawl-errors",
     "description": "An easy way to automate downloading of crawl errors from Google Webmaster Tools",
     "autoload": {
-        "psr-0": {"":""}
+        "classmap": ["src"]
     }
 }
