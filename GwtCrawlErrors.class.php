@@ -190,7 +190,7 @@ class GwtCrawlErrors
             else {
                 // Csv data headline
                 $this->_data = Array(
-                    Array('Issue Id', 'Crawl type', 'Issue type', 'Detail', 'URL', 'Date detected', 'Last detected')
+                    Array('Issue Id', 'Crawl type', 'Issue type', 'Detail', 'URL', 'Linked From', 'Date detected', 'Last detected')
                 );
 
                 while ($currentIndex <= $resultPages) {
@@ -210,12 +210,13 @@ class GwtCrawlErrors
                         $issueType    = $node->getElementsByTagNameNS('http://schemas.google.com/webmasters/tools/2007', 'issue-type')->item(0)->nodeValue;
                         $detail       = $node->getElementsByTagNameNS('http://schemas.google.com/webmasters/tools/2007', 'detail')->item(0)->nodeValue;
                         $url          = $node->getElementsByTagNameNS('http://schemas.google.com/webmasters/tools/2007', 'url')->item(0)->nodeValue;
+                        $linkedFrom   = $node->getElementsByTagNameNS('http://schemas.google.com/webmasters/tools/2007', 'linked-from')->item(0)->nodeValue;
                         $dateDetected = date('d/m/Y', strtotime($node->getElementsByTagNameNS('http://schemas.google.com/webmasters/tools/2007', 'date-detected')->item(0)->nodeValue));
                         $updated      = date('d/m/Y', strtotime($node->getElementsByTagName('updated')->item(0)->nodeValue));
 
                         // add issue data to results array
                         array_push($this->_data,
-                            Array($issueId, $crawlType, $issueType, $detail, $url, $dateDetected, $updated)
+                            Array($issueId, $crawlType, $issueType, $detail, $url, $linkedFrom, $dateDetected, $updated)
                         );
                     }
 
